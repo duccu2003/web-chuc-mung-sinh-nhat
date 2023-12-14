@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mai Nguyen Day</title>
+    <link rel="icon" href="https://telegraph-image-bak.pages.dev/file/c191255cb0bd5d383af86.png">
+    <style>
+        body {
+            background-size: cover;
+            align-items: center;
+            justify-content: center;
+            background-color: #98E2FD;
+            user-select: none;
+        }
+        
+        h1 {
+            background: linear-gradient(45deg, #5e7cff, #e86f6f);
+            -webkit-background-clip: text;
+            color: transparent;
+            font-family: F2;
+            background-clip: text;
+            text-align: center;
+            flex-direction: column;
+        }
+        
+        #loading {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #C6F0F2;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            flex-direction: column;
+            color: #34A5C9;
+            font-size: large;
+        }
+        
+        @font-face {
+            font-family: "F2";
+            src: url("data/victoria.ttf");
+        }
+        
+        @keyframes happybirthday {
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+            30% {
+                transform: translateY(-10px);
+            }
+            50% {
+                transform: translateY(0px);
+            }
+            80% {
+                transform: translateY(10px);
+            }
+        }
+        
+        h1 span {
+            display: inline-block;
+            border-radius: 15px;
+        }
+        
+        #text-ten,
+        #text-ho {
+            background: linear-gradient(45deg, #d26fe8, #1eacc5, #d26fe8, #1eacc5);
+            -webkit-background-clip: text;
+        }
+        /*
+        #text-ten,
+        #text-birthday,
+        #text-happy,
+        #text-ho {
+            animation: happybirthday 4s infinite ease-in-out;
+        }
+        */
+        
+        #text-happy,
+        #text-birthday {
+            background: linear-gradient(45deg, #d26fe8, #1eacc5, #d26fe8, #1eacc5);
+            -webkit-background-clip: text;
+        }
+        
+        #content {
+            display: flex;
+            justify-content: center;
+            align-content: center;
+        }
+        
+        #cakeVideo {
+            border-radius: 50%;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        @media (max-width: 800px) and (max-height: 600px),
+        (max-width: 1024px) and (max-height: 768px),
+        (max-width: 1280px) and (max-height: 1024px),
+        (max-width: 1920px) and (max-height: 1080px),
+        (max-width: 2532px) and (max-height: 1170px),
+        (max-width: 2688px) and (max-height: 1242px),
+        (max-width: 2436px) and (max-height: 1125px),
+        (max-width: 2208px) and (max-height: 1242px),
+        (max-width: 1334px) and (max-height: 750px) {
+            body {
+                background-image: url("data/desktop-background.gif");
+            }
+            h1 {
+                font-size: 50px;
+            }
+            #content {
+                margin-top: 1%;
+            }
+            .card img {
+                width: 325px;
+                height: 450px;
+                border-radius: 20%;
+            }
+            #cakeVideo {
+                width: 512px;
+                height: 512px;
+            }
+            #card-stack {
+                width: 80%;
+                height: 80%;
+            }
+            .note {
+                border-radius: 10px;
+                width: 313px;
+            }
+            .cat-pixel-01 {
+                top: 50%;
+                left: 30%;
+                width: 200px!important;
+                height: 200px!important;
+            }
+            .cat-pixel-02 {
+                top: 50%;
+                left: 70%;
+                width: 200px!important;
+                height: 200px!important;
+            }
+            .monkey-pixel {
+                top: 15%;
+                left: 50%;
+                width: 80px!important;
+                height: 80px!important;
+            }
+            #loading img {
+                width: 180px;
+                height: 180px;
+            }
+        }
+        
+        @media (max-height: 800px) and (max-width: 600px),
+        (max-height: 1024px) and (max-width: 768px),
+        (max-height: 1280px) and (max-width: 1024px),
+        (max-height: 1920px) and (max-width: 1080px),
+        (max-height: 2532px) and (max-width: 1170px),
+        (max-height: 2688px) and (max-width: 1242px),
+        (max-height: 2436px) and (max-width: 1125px),
+        (max-height: 2208px) and (max-width: 1242px),
+        (max-height: 1334px) and (max-width: 750px) {
+            body {
+                background-image: url("data/mobile-background.gif");
+            }
+            h1 {
+                font-size: 40px;
+            }
+            #loading img {
+                width: 180px;
+                height: 180px;
+            }
+            #content {
+                margin-top: 18%;
+            }
+            .card img {
+                width: 250px;
+                height: 350px;
+                border-radius: 10%;
+            }
+            #cakeVideo {
+                width: 300px;
+                height: 300px;
+            }
+            #card-stack {
+                width: 60%;
+                height: 60%;
+            }
+            .lc {
+                margin-left: 2%;
+                margin-bottom: 2%;
+                font-size: small;
+            }
+            .text-lc {
+                font-size: smaller;
+            }
+            .note {
+                width: 238px;
+                border-radius: 15px;
+            }
+            .cat-pixel-01 {
+                top: 78%;
+                left: 16%;
+                width: 125px!important;
+                height: 125px!important;
+            }
+            .cat-pixel-02 {
+                top: 78%;
+                left: 84%;
+                width: 125px!important;
+                height: 125px!important;
+            }
+            .monkey-pixel {
+                top: 25%;
+                left: 50%;
+                width: 100px!important;
+                height: 100px!important;
+            }
+        }
+        
+        #card-stack {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .card {
+            cursor: pointer;
+            transition: transform 0.5s ease-in-out;
+            border-radius: 10%;
+        }
+        
+        .card img {
+            border-radius: 10%;
+        }
+        
+        .note::hover,
+        #image:hover {
+            transform: scale(1);
+        }
+        
+        .lc {
+            justify-content: center;
+            align-content: center;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+        
+        .text-lc {
+            text-align: center;
+        }
+        
+        .note {
+            background-color: rgb(248, 248, 165);
+            padding: 0 8px 2px 8px;
+            text-align: center;
+        }
+        
+        .note,
+        #image {
+            animation: bounceIn 0.5s ease-in-out;
+        }
+        
+        @keyframes bounceIn {
+            0% {
+                transform: translateY(0);
+                opacity: 0;
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes jump-h {
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0);
+            }
+            30% {
+                transform: translateY(-20px);
+            }
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        @keyframes jump-a {
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-20px);
+            }
+            70% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        @keyframes jump-p1 {
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            80% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        @keyframes jump-p2 {
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0);
+            }
+            60% {
+                transform: translateY(-20px);
+            }
+            90% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        @keyframes jump-y {
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0);
+            }
+            70% {
+                transform: translateY(-20px);
+            }
+        }
+        
+        .cat-pixel-01 {
+            position: absolute;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+        }
+        
+        .cat-pixel-02 {
+            position: absolute;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+        }
+        
+        .monkey-pixel {
+            position: absolute;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+        }
+        
+        #image {
+            border: 4px solid rgb(248, 248, 165);
+            justify-content: center;
+            align-content: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="loading">
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdXF6NzkwZGpxZHIxdGNiMWNzMXo2cWZxdGdtMTU5aXAxNmxsZW1udCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l2Sq2ySYEIl3mzVgk/giphy.gif" alt="Loading">
+        <b id="loadingText" style="margin-top: 10px;">Loading...</b>
+    </div>
+    <h1>
+        <b><span id="text-happy">HAPPY</span> <span id="text-birthday">BIRTHDAY</span> <span id="text-ten"></span> <span id="text-ho"></span></b>
+    </h1>
+    <audio id="birthdayAudio" src="data/audio.mp3" autoplay><source src="data/audio.mp3" type="audio/mp3" /></audio>
+    <audio src="data/audio-remix.mp3"><source src="data/audio-remix.mp3" type="audio/mp3" /></audio>
+    <div id="content">
+        <img id="cakeVideo" src="https://media.giphy.com/media/Ca0pp3NF1B1jbp0a1A/giphy.gif" alt="">
+        <div id="card-stack">
+            <div class="card" id="card1">
+                <img id="image" src="images/1.png" alt="Image 1">
+                <img class="monkey-pixel" src="data/monkey-pixel.gif" alt="Monkey Pixel" />
+                <img class="cat-pixel-01" src="data/cat-pixel-01.gif" alt="Cat Pixel" />
+                <img class="cat-pixel-02" src="data/cat-pixel-02.gif" alt="Cat Pixel" />
+                <div class="note">
+                    <h2 class="lc">Lời Chúc</h2>
+                    <p class="text-lc" id="loi-chuc"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.onreadystatechange = function() {
+            var loadingOverlay = document.getElementById('loading');
+
+            if (document.readyState === 'complete') {
+                loadingOverlay.style.display = 'none';
+            } else {
+                loadingOverlay.style.display = 'flex';
+            }
+        };
+
+        function checkRedirect() {
+            if (document.readyState === "complete" && document.title === "404 Not Found") {
+                window.location.href = "https://ducnguyenhoang.io.vn/404.html";
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", checkRedirect);
+    </script>
+    <script>
+        var audio01 = false;
+        var audio = document.getElementById("birthdayAudio");
+        var remixAudio = document.querySelector("audio[src='data/audio-remix.mp3']");
+        var video = document.getElementById("cakeVideo");
+        var cardStack = document.getElementById("card-stack");
+
+        document.addEventListener("click", function() {
+            if (audio01 === false) audio.play();
+        });
+
+        audio.addEventListener("ended", function() {
+            video.classList.add("hidden");
+
+            cardStack.style.display = "flex";
+            audio01 = true;
+            remixAudio.play();
+        });
+
+        var cards = document.querySelectorAll(".card");
+
+        cards.forEach(function(card, index) {
+            card.addEventListener("click", function() {
+                cardStack.insertBefore(card, cardStack.firstChild);
+            });
+        });
+
+        document.addEventListener("DOMContentLoaded", function() {
+            cardStack.style.display = "none";
+        });
+
+        document.addEventListener('gesturestart', function(e) {
+            e.preventDefault();
+        });
+    </script>
+
+    <script>
+        ///--Text Value--///
+        //Name//
+        var ten = [
+            "Mai",
+            "Đức",
+            "Trang",
+            "Hải",
+            "Hương",
+            "Tùng",
+            "Linh",
+            "Nam",
+            "Thu",
+            "Anh",
+            "Roxy"
+            //--Bạn có thể thêm tên vào đây--//
+        ];
+
+        //last name//
+        var ho = [
+            "Nguyễn",
+            "Lê",
+            "Trần",
+            "Phạm",
+            "Võ",
+            "Ngô",
+            "Đặng",
+            "Lý",
+            "Huỳnh",
+            "Vũ",
+            "Heart"
+            //--Bạn có thể thêm họ vào đây--//
+
+        ];
+        //Relationship//
+        var quanhe = ["Ông", "Bà", "Ba", "Mẹ", "Bác", "Cô",
+            "Chú", "Dì", "Anh", "Chị", "Em"
+            //--Bạn có thể thêm cách gọi vào đây--//
+        ]
+
+        //Blessing//
+        var loichuc = [
+            "Chúc mừng sinh nhật nha " + quanhe[9] + " của em🎂🥳.",
+            "Vậy là " + quanhe[9] + " em đã thêm một tuổi mới nữa rồi 🤧.",
+            "Chúc " + quanhe[9] + " ngày càng xinh đẹp và mong mọi điều may mắn sẽ đến với " + quanhe[9] + " 🤞🍀.",
+            "Chúc " + quanhe[9] + " có nhiều niềm vui mới, tuổi mới rồi bớt trẩu lại 🥰😁.",
+            "Với lại bao ăn nhiều hơn nha " + quanhe[9] + " của em 🤤😉."
+            //--Bạn có thể thêm lời chúc vào đây. Lưu ý là số lời chúc tỉ lệ thuận hình bạn thêm vào--//
+
+        ]
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("text-ten").textContent = ten[10].toUpperCase() //--Đây là dán tên vào id text-ten, ở đây ten là "Roxy", và làm nó viết hoa với toUpperCase--//
+            document.getElementById("text-ho").textContent = ho[10].toUpperCase() //--Đây là dán họ vào id text-ho, ở đây ho là "Heart", và làm nó viết hoa với toUpperCase--//
+            document.getElementById("loi-chuc").textContent = loichuc[0]
+                //--Đây là dán lời chúc vào id loi-chuc--//
+
+        });
+
+        var cardStack = document.getElementById("card-stack");
+        var cards = document.querySelectorAll(".card");
+
+        var imageSources = ["images/1.png", "images/2.png", "images/3.png", "images/4.png", "images/5.png"];
+        //--Thay đổi ảnh--//
+        var textContents = [loichuc[0], loichuc[1], loichuc[2], loichuc[3], loichuc[4]];
+        //--Thay đổi lời chúc--//
+
+        var currentImageIndex = 0;
+        var note = document.querySelector(".note");
+
+        var colors = ["rgb(248, 165, 165)", "rgb(165, 248, 165)", "rgb(165, 165, 248)", "rgb(248, 165, 248)", "rgb(248, 248, 165)"];
+
+
+        var currentColorIndex = 0;
+
+        function changeNoteColor() {
+            var borderColor = colors[currentColorIndex];
+            note.style.backgroundColor = borderColor;
+            note.style.backgroundColor = colors[currentColorIndex];
+            cards.forEach(function(card) {
+                var image = card.querySelector("img");
+                image.style.borderColor = borderColor;
+            });
+            currentColorIndex = (currentColorIndex + 1) % colors.length;
+
+
+        } //--Thay đổi màu khung--//
+
+        cards.forEach(function(card, index) {
+            card.addEventListener("click", function() {
+                currentImageIndex = (currentImageIndex + 1) % imageSources.length;
+
+                var image = card.querySelector("img");
+                image.src = imageSources[currentImageIndex];
+
+                var text = card.querySelector(".text-lc");
+                text.textContent = textContents[currentImageIndex];
+
+                changeNoteColor();
+            }); //--Thay đổi màu khung, ảnh, lời chúc khi click--//
+        });
+        document.addEventListener("DOMContentLoaded", function() {
+            if (audio01 = false) audio.play();
+
+        });
+    </script>
+
+    <script>
+        var textHappy = document.getElementById("text-happy");
+        var textBirthday = document.getElementById("text-birthday");
+        var textMai = document.getElementById("text-ten");
+        var textNguyen = document.getElementById("text-ho");
+
+        function applyJumpAnimation(element, animationName) {
+            element.style.animation = animationName + " 2s infinite";
+        }
+
+        applyJumpAnimation(textHappy, "jump-h");
+        applyJumpAnimation(textBirthday, "jump-a");
+        applyJumpAnimation(textMai, "jump-p1");
+        applyJumpAnimation(textNguyen, "jump-p2");
+    </script>
+</body>
+
+</html>

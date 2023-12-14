@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        
+        #card-stack {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .card {
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.5s ease-in-out;
+            border-radius: 20%;
+            /* Make sure the cat-pixel is hidden outside the card */
+        }
+        
+        .card img {
+            width: 250px;
+            height: 350px;
+            border-radius: 10%;
+        }
+        
+        .cat-pixel-01 {
+            position: absolute;
+            top: 72%;
+            left: 15%!important;
+            transform: translate(-50%, -50%);
+            width: 100px!important;
+            height: 100px!important;
+            z-index: 1;
+            /* Ensure that cat-pixel is above the card image */
+        }
+        
+        .cat-pixel-02 {
+            position: absolute;
+            top: 72%;
+            left: 90%!important;
+            transform: translate(-50%, -50%);
+            width: 100px!important;
+            height: 100px!important;
+            z-index: 1;
+            /* Ensure that cat-pixel is above the card image */
+        }
+        
+        .note {
+            background-color: rgb(248, 248, 165);
+            padding: 0 2px 2px 10px;
+            border-radius: 15px;
+            z-index: 2;
+            /* Ensure that note is above the cat-pixel */
+            position: relative;
+            /* Make sure z-index works */
+        }
+        
+        .lc {
+            justify-content: center;
+            align-content: center;
+            font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+        }
+        
+        .text-lc {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="content">
+        <div id="card-stack">
+            <div class="card" id="card1">
+                <img src="data/image-1.jpg" alt="Image 1" />
+                <img class="cat-pixel-01" src="data/cat-pixel-01.gif" alt="Cat Pixel" />
+                <img class="cat-pixel-02" src="data/cat-pixel-02.gif" alt="Cat Pixel" />
+
+                <div class="note">
+                    <h2 class="lc">Lời Chúc</h2>
+                    <p class="text-lc">Tuổi mới niềm vui mới nha</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var cardStack = document.getElementById("card-stack");
+        var cards = document.querySelectorAll(".card");
+
+        // Arrays of image sources and corresponding texts
+        var imageSources = [
+            "data/image-1.jpg",
+            "data/image-2.jpg",
+            "data/image-3.jpg",
+            "data/image-4.jpg",
+            "data/image-5.jpg",
+        ];
+        var textContents = [
+            "Tuổi mới niềm vui mới nha",
+            "Tuổi mới bao Đức nhìu hơn nha :))",
+            "Tuổi mới bớt trẻ trâu nha",
+        ];
+        var currentImageIndex = 0;
+
+        cards.forEach(function(card, index) {
+            card.addEventListener("click", function() {
+                // Increment the image index and wrap around if necessary
+                currentImageIndex = (currentImageIndex + 1) % imageSources.length;
+
+                // Update the image source
+                var image = card.querySelector("img");
+                image.src = imageSources[currentImageIndex];
+
+                // Update the text content
+                var text = card.querySelector(".text-lc");
+                text.textContent = textContents[currentImageIndex];
+            });
+        });
+    </script>
+</body>
+
+</html>
